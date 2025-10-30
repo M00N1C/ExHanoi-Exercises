@@ -42,38 +42,83 @@ function diskCreator(number, className){
 
 // for Move A --> B use this: moves.push([A, B])
 function hanoi(from, via, to, n) {
-    return
+    if (n === 1){
+        moves.push([from, to]);
+        return;
+    }
+    hanoi(from, to, via, n-1);
+    moves.push([from, to]);
+    hanoi(via , from, to, n-1)
 }
 
 function exHanoi_1(start, aux, end, n) {
-    alert("your function is not complete")
-    return
+    if(n === 1){
+        moves.push([start, aux]);
+        moves.push([aux, end]);
+        return;
+    }
+    exHanoi_1(start, aux, end, n-1);
+    moves.push([start, aux]);
+    exHanoi_1(end, aux, start, n-1);
+    moves.push([aux, end]);
+    exHanoi_1(start, aux, end, n-1);
 }  
 
 function exHanoi_2(A, B, C, D, n) {
-    alert("your function is not complete")
-    return
-
+    if(n === 1){
+        moves.push([A,B]);
+        moves.push([C,D]);
+        moves.push([B,C]);
+        moves.push([D,A]);
+        return;
+    }
+    exHanoi_2(A, B, C, D, n-1);
+    moves.push([A,B]);
+    moves.push([C,D]);
+    exHanoi_2(B, A, D, C, n-1);
+    moves.push([B,C]);
+    moves.push([D,A]);
+    exHanoi_2(A, B, C, D, n-1);
 }
 
 function exhanoi_3(A, B, C, n) {
-    alert("your function is not complete")
-    return
-
+    if(n === 1){
+        moves.push([A,C]);
+        moves.push([B,C])
+        return;
+    }
+    exhanoi_3(A, B, C, n-1);
+    moves.push([A,C]);
+    moves.push([B,C]);
+    exhanoi_3(A, B, C, n-1);
 }
 
 // before coding read about the extra rules for this ExHanoi
 function exhanoi_4(A, B, C, D, n) {
-    alert("your function is not complete")
-    return
-
+    if(n === 1){
+        moves.push([A,D]);
+        moves.push([D,C]);
+        return;
+    }
+    exhanoi_4(A, B, C, D, n-1);
+    moves.push([A,D]);
+    exhanoi_4(D, A, B, C, n-1);
+    moves.push([D,C]);
+    exhanoi_4(A, B, C, D, n-1);
 }
 
 // before coding read about the extra rules for this ExHanoi
 function exhanoi_5(A, B, C, D, n) {
-    alert("your function is not complete")
-    return
-
+    if(n === 1){
+        moves.push([A,B]);
+        moves.push([B,C]);
+        return;
+    }
+    exhanoi_5(A, B, C, D, n-1);
+    moves.push([A,B]);
+    exhanoi_5(B, C, D, A, n-1);
+    moves.push([B,C]);
+    exhanoi_5(A, B, C, D, n-1);
 }
 
 function moveDisks(from, to){
